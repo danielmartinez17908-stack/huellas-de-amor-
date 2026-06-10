@@ -128,8 +128,8 @@
   <div id="scroll-bar" style="width:0%"></div>
 
   <!-- ─── NAV ─── -->
-  <nav class="sticky top-0 z-50 bg-crema/95 backdrop-blur border-b border-purple-100" id="navbar">
-    <div class="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between">
+  <nav class="sticky top-0 z-50 bg-crema/95 backdrop-blur border-b border-purple-100" id="navbar" x-data="{ open: false }">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
       <img src="WhatsApp Image 2026-06-10 at 11.36.23 AM.jpeg" alt="Huellas de Amor" class="h-11 object-contain" />
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
         <a href="#sobre" class="hover:text-morado transition relative group">
@@ -149,10 +149,22 @@
           <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-morado group-hover:w-full transition-all duration-300"></span>
         </a>
       </div>
-      <a href="#guias"
-         class="magnetic ripple-btn bg-morado text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-moradoDark transition shadow-sm glow-morado">
-        Ver guías 🐾
-      </a>
+      <div class="flex items-center gap-3">
+        <a href="#guias"
+           class="magnetic ripple-btn bg-morado text-white px-4 sm:px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-moradoDark transition shadow-sm glow-morado">
+          Ver guías 🐾
+        </a>
+        <button @click="open = !open" class="md:hidden p-2 rounded-lg text-slate-500 hover:text-morado hover:bg-moradoLight transition" aria-label="Menú">
+          <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg x-show="open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+    <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="md:hidden bg-crema border-t border-purple-100 px-4 py-4 flex flex-col gap-4 text-sm font-medium text-slate-600">
+      <a href="#sobre" @click="open=false" class="hover:text-morado transition py-1">Nosotros</a>
+      <a href="#guias" @click="open=false" class="hover:text-morado transition py-1">Guías</a>
+      <a href="#temas" @click="open=false" class="hover:text-morado transition py-1">Temas</a>
+      <a href="#comunidad" @click="open=false" class="hover:text-morado transition py-1">Comunidad</a>
     </div>
   </nav>
 
@@ -170,13 +182,13 @@
     <div class="paw-float" style="right:25%;top:90%;animation-delay:3.5s;font-size:.9rem">🐾</div>
     <div class="paw-float" style="left:50%;top:88%;animation-delay:1.8s;font-size:1.1rem">🐾</div>
 
-    <div class="max-w-6xl mx-auto px-8 py-16 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-12 sm:py-16 grid lg:grid-cols-2 gap-12 items-center relative z-10">
 
       <!-- Left: stagger text -->
       <div class="hero-stagger">
         <span class="text-xs font-semibold text-rosa uppercase tracking-widest">Guías digitales para dueños responsables</span>
 
-        <h1 class="text-4xl xl:text-[2.6rem] font-black leading-[1.1] mt-2 text-slate-800 tracking-tight">
+        <h1 class="text-3xl sm:text-4xl xl:text-[2.6rem] font-black leading-[1.1] mt-2 text-slate-800 tracking-tight">
           Todo lo que necesitas para<br/>cuidar mejor a tu
           <span class="text-rosa relative inline-block">
             peludo
@@ -235,7 +247,7 @@
     <div class="max-w-7xl mx-auto px-6 relative z-10">
       <div class="max-w-3xl mx-auto text-center mb-20">
         <p class="text-xs font-bold uppercase tracking-widest text-rosa mb-4 fade-up">El problema real</p>
-        <h2 class="text-4xl lg:text-5xl font-black text-slate-800 leading-[1.1] mb-6 fade-up" style="transition-delay:.1s">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-800 leading-[1.1] mb-6 fade-up" style="transition-delay:.1s">
           Amas a tu peludo.<br/>
           <span class="text-morado">Pero no siempre sabes<br/>cómo cuidarlo bien.</span>
         </h2>
@@ -284,11 +296,11 @@
     <!-- Animated rings -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/5 rounded-full z-[1]" style="animation:pulseRing 5s ease-out infinite"></div>
 
-    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-[2]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-[2]">
       <div class="text-white fade-left">
         <img src="WhatsApp Image 2026-06-10 at 11.36.23 AM (2).jpeg" alt="Huellas de Amor" class="h-20 object-contain mb-6 drop-shadow-lg" />
         <p class="text-xs font-bold uppercase tracking-widest text-rosa mb-4">Por qué Huellas de Amor</p>
-        <h2 class="text-4xl lg:text-5xl font-black mb-6 leading-[1.1]">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-[1.1]">
           No somos una<br/>enciclopedia.<br/>
           <span class="text-rosa">Somos tu guía.</span>
         </h2>
@@ -297,21 +309,21 @@
           Nosotros combinamos las tres cosas que realmente importan:
         </p>
 
-        <div class="grid grid-cols-3 gap-4 stagger">
-          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/10 card-lift hover:bg-white/20 transition cursor-default">
-            <div class="text-3xl mb-3">📚</div>
-            <p class="font-bold text-lg">Educar</p>
-            <p class="text-white/50 text-xs mt-1">Qué hacer y por qué hacerlo</p>
+        <div class="grid grid-cols-3 gap-2 sm:gap-4 stagger">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 sm:p-5 text-center border border-white/10 card-lift hover:bg-white/20 transition cursor-default">
+            <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">📚</div>
+            <p class="font-bold text-sm sm:text-lg">Educar</p>
+            <p class="text-white/50 text-xs mt-1 hidden sm:block">Qué hacer y por qué hacerlo</p>
           </div>
-          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/10 card-lift hover:bg-white/20 transition cursor-default">
-            <div class="text-3xl mb-3">🤝</div>
-            <p class="font-bold text-lg">Acompañar</p>
-            <p class="text-white/50 text-xs mt-1">Siempre cerca del dueño</p>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 sm:p-5 text-center border border-white/10 card-lift hover:bg-white/20 transition cursor-default">
+            <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">🤝</div>
+            <p class="font-bold text-sm sm:text-lg">Acompañar</p>
+            <p class="text-white/50 text-xs mt-1 hidden sm:block">Siempre cerca del dueño</p>
           </div>
-          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/10 card-lift hover:bg-white/20 transition cursor-default">
-            <div class="text-3xl mb-3">✨</div>
-            <p class="font-bold text-lg">Simplificar</p>
-            <p class="text-white/50 text-xs mt-1">Sin tecnicismos innecesarios</p>
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 sm:p-5 text-center border border-white/10 card-lift hover:bg-white/20 transition cursor-default">
+            <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">✨</div>
+            <p class="font-bold text-sm sm:text-lg">Simplificar</p>
+            <p class="text-white/50 text-xs mt-1 hidden sm:block">Sin tecnicismos innecesarios</p>
           </div>
         </div>
       </div>
@@ -319,7 +331,7 @@
       <div class="fade-right">
         <div class="bg-crema rounded-3xl p-8 shadow-2xl">
           <p class="text-xs font-bold uppercase tracking-widest text-rosa mb-6">Nuestra promesa</p>
-          <blockquote class="text-3xl font-black text-slate-800 leading-[1.2] mb-8">
+          <blockquote class="text-2xl sm:text-3xl font-black text-slate-800 leading-[1.2] mb-8">
             "Ayudamos a las familias con peludos a brindar una vida más
             <span class="text-morado">saludable, feliz y plena</span>
             a sus compañeros de cuatro patas."
@@ -356,7 +368,7 @@
     <div class="max-w-7xl mx-auto px-6 relative z-10">
       <div class="text-center mb-16">
         <p class="text-xs font-bold uppercase tracking-widest text-rosa mb-4 fade-up">Nuestras guías digitales</p>
-        <h2 class="text-4xl lg:text-5xl font-black text-slate-800 leading-[1.1] mb-4 fade-up" style="transition-delay:.1s">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-800 leading-[1.1] mb-4 fade-up" style="transition-delay:.1s">
           Todo lo que tu peludo necesita,<br/>
           <span class="text-morado">en formato PDF</span>
         </h2>
@@ -458,24 +470,24 @@
     <div class="absolute inset-0 grid-bg opacity-40"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-moradoLight rounded-full blur-3xl opacity-20"></div>
 
-    <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
       <p class="text-xs font-bold uppercase tracking-widest text-rosa mb-4 fade-up">Únete a la comunidad</p>
-      <h2 class="text-4xl lg:text-5xl font-black text-slate-800 leading-[1.1] mb-6 fade-up" style="transition-delay:.1s">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-800 leading-[1.1] mb-6 fade-up" style="transition-delay:.1s">
         Dueños que aman<br/>a sus peludos como<br/>
         <span class="text-morado">tú lo amas</span>
       </h2>
-      <p class="text-slate-500 text-lg leading-relaxed mb-12 max-w-2xl mx-auto fade-up" style="transition-delay:.2s">
+      <p class="text-slate-500 text-base sm:text-lg leading-relaxed mb-10 sm:mb-12 max-w-2xl mx-auto fade-up" style="transition-delay:.2s">
         Seguimos creciendo en redes con contenido educativo, consejos y recursos gratuitos para dueños responsables.
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-5 justify-center fade-up" style="transition-delay:.3s">
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center fade-up" style="transition-delay:.3s">
         <a href="https://www.instagram.com/huellasdeamor.pet/" target="_blank"
-           class="magnetic ripple-btn inline-flex items-center justify-center gap-3 bg-gradient-to-br from-morado to-rosa text-white px-10 py-5 rounded-2xl font-bold text-lg hover:opacity-90 transition shadow-2xl shadow-purple-200">
+           class="magnetic ripple-btn inline-flex items-center justify-center gap-3 bg-gradient-to-br from-morado to-rosa text-white px-6 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold text-base sm:text-lg hover:opacity-90 transition shadow-2xl shadow-purple-200">
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
           Seguirnos en Instagram
         </a>
         <a href="https://www.tiktok.com/@huellasdeamor177" target="_blank"
-           class="magnetic ripple-btn inline-flex items-center justify-center gap-3 bg-slate-900 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-800 transition shadow-xl">
+           class="magnetic ripple-btn inline-flex items-center justify-center gap-3 bg-slate-900 text-white px-6 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold text-base sm:text-lg hover:bg-slate-800 transition shadow-xl">
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.77 1.52V6.74a4.85 4.85 0 01-1-.05z"/></svg>
           Vernos en TikTok
         </a>
@@ -486,8 +498,8 @@
   <!-- ─── FOOTER ─── -->
   <footer class="bg-slate-900 text-white py-14 relative overflow-hidden">
     <div class="absolute inset-0 dot-bg opacity-5"></div>
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-      <div class="grid md:grid-cols-3 gap-10 mb-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="grid md:grid-cols-3 gap-8 md:gap-10 mb-10">
         <div>
           <img src="WhatsApp Image 2026-06-10 at 11.36.23 AM.jpeg" alt="Huellas de Amor" class="h-12 object-contain brightness-0 invert opacity-80 mb-4" />
           <p class="text-white/50 text-sm leading-relaxed max-w-xs">
