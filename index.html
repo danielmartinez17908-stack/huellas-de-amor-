@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Huellas de Amor — Cuida mejor a tu peludo</title>
-  <meta name="description" content="Todo lo que necesitas para cuidar mejor a tu peludo en un solo lugar. Guías digitales, consejos y recursos prácticos." />
+  <title>Huellas de Amor — Ebooks para cuidar mejor a tu peludo</title>
+  <meta name="description" content="Guías digitales prácticas para que tu peludo coma mejor y viva más sano. Pide tu ebook directo por WhatsApp." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script>
@@ -26,7 +25,6 @@
     body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FBF7F0; overflow-x: hidden; }
     h1,h2,h3 { font-family: 'Playfair Display', serif; }
 
-    /* GRAIN */
     .grain::before {
       content:''; position:fixed; top:-50%; left:-50%; width:200%; height:200%;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
@@ -38,540 +36,256 @@
       60%{transform:translate(1%,-4%)} 70%{transform:translate(-2%,3%)} 80%{transform:translate(3%,-1%)} 90%{transform:translate(-1%,2%)}
     }
 
-    /* PATTERNS */
     .dot-bg { background-image:radial-gradient(circle,#6B21A820 1px,transparent 1px); background-size:28px 28px; }
-    .dot-bg-light { background-image:radial-gradient(circle,#e8429a18 1px,transparent 1px); background-size:22px 22px; }
     .grid-bg { background-image:linear-gradient(#6B21A808 1px,transparent 1px),linear-gradient(90deg,#6B21A808 1px,transparent 1px); background-size:40px 40px; }
 
-    /* ANIMATIONS */
-    .fade-up { opacity:0; transform:translateY(32px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .fade-up { opacity:0; transform:translateY(28px); transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
     .fade-up.visible { opacity:1; transform:none; }
-    .fade-left { opacity:0; transform:translateX(-32px); transition:opacity .7s cubic-bezier(.22,1,.36,1) .1s, transform .7s cubic-bezier(.22,1,.36,1) .1s; }
-    .fade-left.visible { opacity:1; transform:none; }
-    .fade-right { opacity:0; transform:translateX(32px); transition:opacity .7s cubic-bezier(.22,1,.36,1) .2s, transform .7s cubic-bezier(.22,1,.36,1) .2s; }
-    .fade-right.visible { opacity:1; transform:none; }
     .stagger > * { opacity:0; transform:translateY(20px); transition:opacity .5s ease, transform .5s ease; }
     .stagger.visible > *:nth-child(1){opacity:1;transform:none;transition-delay:0s}
     .stagger.visible > *:nth-child(2){opacity:1;transform:none;transition-delay:.12s}
     .stagger.visible > *:nth-child(3){opacity:1;transform:none;transition-delay:.24s}
-    .stagger.visible > *:nth-child(4){opacity:1;transform:none;transition-delay:.36s}
-    .stagger.visible > *:nth-child(5){opacity:1;transform:none;transition-delay:.48s}
 
-    /* HERO STAGGER: texto izquierdo */
     .hero-stagger > * { opacity:0; filter:blur(8px); transform:translateY(18px); transition:opacity .6s cubic-bezier(.22,1,.36,1), filter .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
     .hero-stagger.visible > *:nth-child(1){opacity:1;filter:blur(0);transform:none;transition-delay:.1s}
     .hero-stagger.visible > *:nth-child(2){opacity:1;filter:blur(0);transform:none;transition-delay:.25s}
     .hero-stagger.visible > *:nth-child(3){opacity:1;filter:blur(0);transform:none;transition-delay:.4s}
-    .hero-stagger.visible > *:nth-child(4){opacity:1;filter:blur(0);transform:none;transition-delay:.55s}
 
-    /* GALLERY GRID */
-    .gallery-grid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:50px 150px 50px 150px 50px; gap:16px; }
-    .gallery-cell { position:relative; overflow:hidden; border-radius:14px; box-shadow:0 10px 40px rgba(0,0,0,.18); opacity:0; transition:opacity .5s ease, filter .5s ease; filter:blur(6px); }
-    .gallery-cell.visible { opacity:1; filter:blur(0); }
-    .gallery-cell img { width:100%; height:100%; object-fit:cover; object-position:center; }
-
-    .card-tilt { transition:transform .2s ease, box-shadow .2s ease; transform-style:preserve-3d; }
     .card-lift { transition:transform .3s ease, box-shadow .3s ease; }
-    .card-lift:hover { transform:translateY(-6px); box-shadow:0 24px 48px rgba(107,33,168,.15); }
+    .card-lift:hover { transform:translateY(-6px); box-shadow:0 24px 48px rgba(107,33,168,.18); }
     .magnetic { transition:transform .3s cubic-bezier(.22,1,.36,1); display:inline-flex; }
     .ripple-btn { position:relative; overflow:hidden; }
-    .ripple-btn .ripple { position:absolute; border-radius:50%; transform:scale(0); animation:rippleAnim .6s linear; background:rgba(255,255,255,.3); pointer-events:none; }
+    .ripple-btn .ripple { position:absolute; border-radius:50%; transform:scale(0); animation:rippleAnim .6s linear; background:rgba(255,255,255,.35); pointer-events:none; }
     @keyframes rippleAnim { to { transform:scale(4); opacity:0; } }
-
-    .paw-float { position:absolute; opacity:0; animation:pawFloat 7s ease-in-out infinite; font-size:1.4rem; pointer-events:none; }
-    @keyframes pawFloat { 0%{opacity:0;transform:translateY(0) rotate(0deg)} 15%{opacity:.12} 85%{opacity:.08} 100%{opacity:0;transform:translateY(-140px) rotate(25deg)} }
-
-    @keyframes floatBadge { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-10px) rotate(1deg)} }
-    .float-badge { animation:floatBadge 3.5s ease-in-out infinite; }
-    @keyframes floatSlow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
-    .float-slow { animation:floatSlow 4s ease-in-out infinite; }
 
     .shimmer { background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.4) 50%,transparent 100%); background-size:200% 100%; animation:shimmer 2.5s infinite; }
     @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
 
-    @keyframes pulseRing { 0%{opacity:.6;transform:scale(1)} 100%{opacity:0;transform:scale(1.8)} }
-    .pulse-ring::after { content:''; position:absolute; inset:0; border-radius:999px; border:2px solid #E8429A; animation:pulseRing 2.2s ease-out infinite; }
-
-    #scroll-bar { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#6B21A8,#E8429A); z-index:9999; }
-    .cursor-dot { width:8px; height:8px; background:#E8429A; border-radius:50%; position:fixed; pointer-events:none; z-index:99998; mix-blend-mode:multiply; }
-    .glow-morado { box-shadow:0 0 30px rgba(107,33,168,.3),0 20px 60px rgba(107,33,168,.2); }
-    .glow-rosa { box-shadow:0 0 30px rgba(232,66,154,.3),0 20px 60px rgba(232,66,154,.2); }
-
-    .noise-overlay { position:relative; overflow:hidden; }
-
-    /* TOPIC CARDS */
-    .topic-card { transition:all .3s ease; cursor:default; }
-    .topic-card:hover { transform:translateY(-8px) scale(1.02); }
-    .topic-card:hover .topic-icon { transform:scale(1.2) rotate(5deg); }
-    .topic-icon { transition:transform .3s ease; display:inline-block; }
-
-    /* EBOOK CARD */
     .ebook-card { transition:all .35s cubic-bezier(.22,1,.36,1); }
     .ebook-card:hover { transform:translateY(-10px); box-shadow:0 40px 80px rgba(107,33,168,.2); }
     .ebook-card:hover .ebook-img { transform:scale(1.05); }
     .ebook-img { transition:transform .5s ease; }
 
-    /* VALUE PILLS */
-    .value-pill { transition:all .3s ease; }
-    .value-pill:hover { transform:scale(1.05); background:linear-gradient(135deg,#6B21A8,#E8429A); color:white; }
+    .paw-float { position:absolute; opacity:0; animation:pawFloat 7s ease-in-out infinite; font-size:1.4rem; pointer-events:none; }
+    @keyframes pawFloat { 0%{opacity:0;transform:translateY(0) rotate(0deg)} 15%{opacity:.12} 85%{opacity:.08} 100%{opacity:0;transform:translateY(-140px) rotate(25deg)} }
 
-    /* COMING SOON CARD */
-    .coming-card { border:2px dashed #6B21A820; }
+    .glow-rosa { box-shadow:0 0 30px rgba(232,66,154,.3),0 20px 60px rgba(232,66,154,.2); }
+    .glow-morado { box-shadow:0 0 30px rgba(107,33,168,.3),0 20px 60px rgba(107,33,168,.2); }
 
-    .zigzag::after { content:''; position:absolute; bottom:-1px; left:0; width:100%; height:36px; background:#FBF7F0; clip-path:polygon(0 100%,2% 0,4% 100%,6% 0,8% 100%,10% 0,12% 100%,14% 0,16% 100%,18% 0,20% 100%,22% 0,24% 100%,26% 0,28% 100%,30% 0,32% 100%,34% 0,36% 100%,38% 0,40% 100%,42% 0,44% 100%,46% 0,48% 100%,50% 0,52% 100%,54% 0,56% 100%,58% 0,60% 100%,62% 0,64% 100%,66% 0,68% 100%,70% 0,72% 100%,74% 0,76% 100%,78% 0,80% 100%,82% 0,84% 100%,86% 0,88% 100%,90% 0,92% 100%,94% 0,96% 100%,98% 0,100% 100%); }
+    #scroll-bar { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#6B21A8,#E8429A); z-index:9999; }
 
-    @keyframes textReveal { from{clip-path:inset(0 100% 0 0)} to{clip-path:inset(0 0% 0 0)} }
-    .text-reveal { animation:textReveal .8s cubic-bezier(.22,1,.36,1) forwards; }
+    /* FLOATING WHATSAPP */
+    .wa-float { position:fixed; bottom:20px; right:20px; z-index:9999; }
+    .pulse-ring { position:relative; }
+    .pulse-ring::after { content:''; position:absolute; inset:0; border-radius:999px; border:2px solid #25D366; animation:pulseRing 2.2s ease-out infinite; }
+    @keyframes pulseRing { 0%{opacity:.6;transform:scale(1)} 100%{opacity:0;transform:scale(1.7)} }
   </style>
 </head>
 <body class="grain">
   <div id="scroll-bar" style="width:0%"></div>
 
   <!-- ─── NAV ─── -->
-  <nav class="sticky top-0 z-50 bg-crema/95 backdrop-blur border-b border-purple-100" id="navbar" x-data="{ open: false }">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+  <nav class="sticky top-0 z-50 bg-crema/95 backdrop-blur border-b border-purple-100" id="navbar">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
       <img src="WhatsApp Image 2026-06-10 at 11.36.23 AM.jpeg" alt="Huellas de Amor" class="h-11 object-contain" />
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500">
-        <a href="#sobre" class="hover:text-morado transition relative group">
-          Nosotros
-          <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-morado group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href="#guias" class="hover:text-morado transition relative group">
-          Guías
-          <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-morado group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href="#temas" class="hover:text-morado transition relative group">
-          Temas
-          <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-morado group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href="#comunidad" class="hover:text-morado transition relative group">
-          Comunidad
-          <span class="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-morado group-hover:w-full transition-all duration-300"></span>
-        </a>
-      </div>
-      <div class="flex items-center gap-3">
-        <a href="#guias"
-           class="magnetic ripple-btn bg-morado text-white px-4 sm:px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-moradoDark transition shadow-sm glow-morado">
-          Ver guías 🐾
-        </a>
-        <button @click="open = !open" class="md:hidden p-2 rounded-lg text-slate-500 hover:text-morado hover:bg-moradoLight transition" aria-label="Menú">
-          <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          <svg x-show="open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-    </div>
-    <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="md:hidden bg-crema border-t border-purple-100 px-4 py-4 flex flex-col gap-4 text-sm font-medium text-slate-600">
-      <a href="#sobre" @click="open=false" class="hover:text-morado transition py-1">Nosotros</a>
-      <a href="#guias" @click="open=false" class="hover:text-morado transition py-1">Guías</a>
-      <a href="#temas" @click="open=false" class="hover:text-morado transition py-1">Temas</a>
-      <a href="#comunidad" @click="open=false" class="hover:text-morado transition py-1">Comunidad</a>
+      <a href="https://wa.me/573159784093?text=Hola%21%20Quiero%20saber%20m%C3%A1s%20sobre%20los%20ebooks%20de%20Huellas%20de%20Amor%20%F0%9F%90%BE"
+         target="_blank"
+         class="magnetic ripple-btn bg-morado text-white px-4 sm:px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-moradoDark transition shadow-sm glow-morado inline-flex items-center gap-2">
+        Escríbenos 🐾
+      </a>
     </div>
   </nav>
 
-  <!-- ─── HERO ─── -->
-  <section class="min-h-screen flex flex-col justify-center relative overflow-hidden bg-crema">
-    <!-- Background layers -->
+  <!-- ─── HERO + EBOOKS ─── -->
+  <section class="relative overflow-hidden bg-crema">
     <div class="absolute inset-0 grid-bg opacity-60"></div>
     <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-moradoLight rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl opacity-70"></div>
     <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-rosaLight rounded-full -translate-x-1/4 translate-y-1/4 blur-3xl opacity-60"></div>
 
-    <!-- Floating paws -->
-    <div class="paw-float" style="left:8%;top:80%;animation-delay:0s;">🐾</div>
-    <div class="paw-float" style="left:20%;top:85%;animation-delay:2s;font-size:1rem">🐾</div>
-    <div class="paw-float" style="right:15%;top:75%;animation-delay:1s;">🐾</div>
-    <div class="paw-float" style="right:25%;top:90%;animation-delay:3.5s;font-size:.9rem">🐾</div>
-    <div class="paw-float" style="left:50%;top:88%;animation-delay:1.8s;font-size:1.1rem">🐾</div>
+    <div class="paw-float" style="left:8%;top:90%;animation-delay:0s;">🐾</div>
+    <div class="paw-float" style="right:10%;top:85%;animation-delay:2s;font-size:1rem">🐾</div>
+    <div class="paw-float" style="left:50%;top:95%;animation-delay:1.2s;font-size:1.1rem">🐾</div>
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-8 py-12 sm:py-16 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-16 relative z-10">
 
-      <!-- Left: stagger text -->
-      <div class="hero-stagger">
+      <div class="hero-stagger text-center max-w-2xl mx-auto mb-10">
         <span class="text-xs font-semibold text-rosa uppercase tracking-widest">Guías digitales para dueños responsables</span>
-
-        <h1 class="text-3xl sm:text-4xl xl:text-[2.6rem] font-black leading-[1.1] mt-2 text-slate-800 tracking-tight">
-          Todo lo que necesitas para<br/>cuidar mejor a tu
+        <h1 class="text-3xl sm:text-4xl xl:text-5xl font-black leading-[1.1] mt-3 text-slate-800 tracking-tight">
+          Cuida mejor a tu
           <span class="text-rosa relative inline-block">
             peludo
             <svg class="absolute -bottom-1.5 left-0 w-full" viewBox="0 0 200 10" fill="none"><path d="M2 8 Q50 1 100 6 Q150 11 198 3" stroke="#6B21A8" stroke-width="3" stroke-linecap="round" fill="none"/></svg>
           </span>
+          desde hoy
         </h1>
-
-        <p class="text-lg text-slate-500 leading-relaxed max-w-md mt-4">
-          Información práctica, clara y fácil de aplicar.<br/>
-          <strong class="text-slate-700">Educar · Acompañar · Simplificar.</strong>
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-3 mt-6">
-          <a href="#guias"
-             class="magnetic ripple-btn bg-morado text-white px-7 py-3.5 rounded-xl font-bold text-base hover:bg-moradoDark transition glow-morado inline-flex items-center gap-2">
-            Ver nuestras guías <span class="animate-bounce">↓</span>
-          </a>
-          <a href="https://www.instagram.com/huellasdeamor.pet/" target="_blank"
-             class="magnetic ripple-btn border-2 border-morado text-morado px-7 py-3.5 rounded-xl font-bold text-base hover:bg-moradoLight transition inline-flex items-center gap-2">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            Síguenos
-          </a>
-        </div>
-      </div>
-
-      <!-- Right: staggered gallery grid (replicando el componente React) -->
-      <div class="hidden lg:block">
-        <div class="gallery-grid" id="hero-gallery">
-          <!-- cell 1: col2 row1-3 -->
-          <div class="gallery-cell" style="grid-column:2/3;grid-row:1/3;" data-delay="0">
-            <img src="WhatsApp Image 2026-06-10 at 1.37.29 PM.jpeg" alt="" />
-          </div>
-          <!-- cell 2: col1 row2-4 -->
-          <div class="gallery-cell" style="grid-column:1/2;grid-row:2/4;background:linear-gradient(135deg,#F3E8FF,#FDE8F3);display:flex;align-items:center;justify-content:center;" data-delay="200">
-            <img src="WhatsApp Image 2026-06-10 at 11.36.23 AM (2).jpeg" alt="Huellas de Amor" style="width:80%;object-fit:contain;drop-shadow:0 4px 20px rgba(107,33,168,.2);" />
-          </div>
-          <!-- cell 3: col1 row4-6 -->
-          <div class="gallery-cell" style="grid-column:1/2;grid-row:4/6;" data-delay="400">
-            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80" alt="" />
-          </div>
-          <!-- cell 4: col2 row3-5 -->
-          <div class="gallery-cell" style="grid-column:2/3;grid-row:3/5;" data-delay="600">
-            <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=600&q=80" alt="" />
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ─── HERO IMAGES MÓVIL ─── -->
-  <div class="lg:hidden grid grid-cols-2 gap-3 px-4 py-6 bg-crema">
-    <div class="rounded-2xl overflow-hidden h-44 shadow-md">
-      <img src="WhatsApp Image 2026-06-10 at 1.37.29 PM.jpeg" alt="" class="w-full h-full object-cover" />
-    </div>
-    <div class="rounded-2xl overflow-hidden h-44 shadow-md bg-gradient-to-br from-moradoLight to-rosaLight flex items-center justify-center">
-      <img src="WhatsApp Image 2026-06-10 at 11.36.23 AM (2).jpeg" alt="Huellas de Amor" class="h-24 object-contain" />
-    </div>
-    <div class="rounded-2xl overflow-hidden h-44 shadow-md">
-      <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover" />
-    </div>
-    <div class="rounded-2xl overflow-hidden h-44 shadow-md">
-      <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover" />
-    </div>
-  </div>
-
-  <!-- ─── EL PROBLEMA ─── -->
-  <section class="py-24 bg-white relative overflow-hidden" id="sobre">
-    <div class="absolute inset-0 dot-bg-light opacity-50"></div>
-    <div class="absolute right-0 top-0 w-80 h-80 bg-moradoLight rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl opacity-50"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="max-w-3xl mx-auto text-center mb-20">
-        <p class="text-xs font-bold uppercase tracking-widest text-rosa mb-4 fade-up">El problema real</p>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-800 leading-[1.1] mb-6 fade-up" style="transition-delay:.1s">
-          Amas a tu peludo.<br/>
-          <span class="text-morado">Pero no siempre sabes<br/>cómo cuidarlo bien.</span>
-        </h2>
-        <p class="text-slate-500 text-lg leading-relaxed fade-up" style="transition-delay:.2s">
-          Y no es tu culpa. La información en internet es contradictoria, técnica y difícil de aplicar.
-          Huellas de Amor existe para cambiar eso.
+        <p class="text-lg text-slate-500 leading-relaxed mt-4">
+          Ebooks prácticos, claros y fáciles de aplicar. Pídelo directo por WhatsApp y lo recibes al instante.
         </p>
       </div>
 
-      <!-- 5 pain points -->
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 stagger" id="temas">
-        <div class="topic-card bg-crema rounded-3xl p-6 text-center">
-          <div class="topic-icon text-4xl mb-4">🍖</div>
-          <p class="font-bold text-slate-800 text-sm leading-snug">Alimentación adecuada</p>
-          <p class="text-slate-400 text-xs mt-2 leading-relaxed">¿Qué puede y qué no puede comer?</p>
-        </div>
-        <div class="topic-card bg-crema rounded-3xl p-6 text-center">
-          <div class="topic-icon text-4xl mb-4">🎓</div>
-          <p class="font-bold text-slate-800 text-sm leading-snug">Educación y comportamiento</p>
-          <p class="text-slate-400 text-xs mt-2 leading-relaxed">Cómo enseñarle hábitos correctos</p>
-        </div>
-        <div class="topic-card bg-crema rounded-3xl p-6 text-center">
-          <div class="topic-icon text-4xl mb-4">❤️‍🩹</div>
-          <p class="font-bold text-slate-800 text-sm leading-snug">Salud y bienestar</p>
-          <p class="text-slate-400 text-xs mt-2 leading-relaxed">Señales de alerta y prevención</p>
-        </div>
-        <div class="topic-card bg-crema rounded-3xl p-6 text-center">
-          <div class="topic-icon text-4xl mb-4">🛁</div>
-          <p class="font-bold text-slate-800 text-sm leading-snug">Cuidados diarios</p>
-          <p class="text-slate-400 text-xs mt-2 leading-relaxed">Rutinas esenciales para su bienestar</p>
-        </div>
-        <div class="topic-card bg-crema rounded-3xl p-6 text-center md:col-span-3 lg:col-span-1">
-          <div class="topic-icon text-4xl mb-4">🐶</div>
-          <p class="font-bold text-slate-800 text-sm leading-snug">Necesidades según la edad</p>
-          <p class="text-slate-400 text-xs mt-2 leading-relaxed">Cachorro, adulto o senior</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- EBOOKS -->
+      <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
 
-  <!-- ─── PROPUESTA DE VALOR ─── -->
-  <section class="py-24 bg-morado relative overflow-hidden noise-overlay">
-    <div class="absolute inset-0 dot-bg opacity-10 z-[1]"></div>
-    <div class="absolute top-0 right-0 w-96 h-96 bg-rosa/15 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl z-[1]"></div>
-    <div class="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full -translate-x-1/3 translate-y-1/3 blur-3xl z-[1]"></div>
-    <!-- Animated rings -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-white/5 rounded-full z-[1]" style="animation:pulseRing 5s ease-out infinite"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-[2]">
-      <div class="text-white fade-left">
-        <img src="WhatsApp Image 2026-06-10 at 11.36.23 AM (2).jpeg" alt="Huellas de Amor" class="h-20 object-contain mb-6 drop-shadow-lg" />
-        <p class="text-xs font-bold uppercase tracking-widest text-rosa mb-4">Por qué Huellas de Amor</p>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-[1.1]">
-          No somos una<br/>enciclopedia.<br/>
-          <span class="text-rosa">Somos tu guía.</span>
-        </h2>
-        <p class="text-white/70 text-lg leading-relaxed mb-10">
-          La mayoría de las cuentas solo entretiene, solo vende, o usa lenguaje demasiado técnico.
-          Nosotros combinamos las tres cosas que realmente importan:
-        </p>
-
-        <div class="grid grid-cols-3 gap-2 sm:gap-4 stagger">
-          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 sm:p-5 text-center border border-white/10 card-lift hover:bg-white/20 transition cursor-default">
-            <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">📚</div>
-            <p class="font-bold text-sm sm:text-lg">Educar</p>
-            <p class="text-white/50 text-xs mt-1 hidden sm:block">Qué hacer y por qué hacerlo</p>
-          </div>
-          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 sm:p-5 text-center border border-white/10 card-lift hover:bg-white/20 transition cursor-default">
-            <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">🤝</div>
-            <p class="font-bold text-sm sm:text-lg">Acompañar</p>
-            <p class="text-white/50 text-xs mt-1 hidden sm:block">Siempre cerca del dueño</p>
-          </div>
-          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 sm:p-5 text-center border border-white/10 card-lift hover:bg-white/20 transition cursor-default">
-            <div class="text-2xl sm:text-3xl mb-2 sm:mb-3">✨</div>
-            <p class="font-bold text-sm sm:text-lg">Simplificar</p>
-            <p class="text-white/50 text-xs mt-1 hidden sm:block">Sin tecnicismos innecesarios</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="fade-right">
-        <div class="bg-crema rounded-3xl p-8 shadow-2xl">
-          <p class="text-xs font-bold uppercase tracking-widest text-rosa mb-6">Nuestra promesa</p>
-          <blockquote class="text-2xl sm:text-3xl font-black text-slate-800 leading-[1.2] mb-8">
-            "Ayudamos a las familias con peludos a brindar una vida más
-            <span class="text-morado">saludable, feliz y plena</span>
-            a sus compañeros de cuatro patas."
-          </blockquote>
-          <div class="space-y-3 stagger">
-            <div class="flex items-center gap-3">
-              <span class="w-6 h-6 bg-moradoLight rounded-full flex items-center justify-center text-morado text-xs font-bold shrink-0">✓</span>
-              <p class="text-slate-600 text-sm">Información práctica y verificada</p>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="w-6 h-6 bg-moradoLight rounded-full flex items-center justify-center text-morado text-xs font-bold shrink-0">✓</span>
-              <p class="text-slate-600 text-sm">Sin mitos ni consejos genéricos de internet</p>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="w-6 h-6 bg-moradoLight rounded-full flex items-center justify-center text-morado text-xs font-bold shrink-0">✓</span>
-              <p class="text-slate-600 text-sm">Fácil de aplicar desde el primer día</p>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="w-6 h-6 bg-moradoLight rounded-full flex items-center justify-center text-morado text-xs font-bold shrink-0">✓</span>
-              <p class="text-slate-600 text-sm">Diseñado para dueños que aman a sus peludos</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── GUÍAS ─── -->
-  <section class="py-28 bg-crema relative overflow-hidden" id="guias">
-    <div class="absolute inset-0 dot-bg opacity-30"></div>
-    <div class="absolute -top-20 -right-20 w-80 h-80 bg-rosaLight rounded-full blur-3xl opacity-60"></div>
-    <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-moradoLight rounded-full blur-3xl opacity-50"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10">
-      <div class="text-center mb-16">
-        <p class="text-xs font-bold uppercase tracking-widest text-rosa mb-4 fade-up">Nuestras guías digitales</p>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-800 leading-[1.1] mb-4 fade-up" style="transition-delay:.1s">
-          Todo lo que tu peludo necesita,<br/>
-          <span class="text-morado">en formato PDF</span>
-        </h2>
-        <p class="text-slate-500 text-lg max-w-xl mx-auto fade-up" style="transition-delay:.2s">
-          Guías digitales que se van ampliando con el tiempo.<br/>
-          Información organizada, práctica y descargable al instante.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <!-- EBOOK 1: DISPONIBLE -->
-        <a href="alimentacion-segura.html" class="ebook-card bg-white rounded-3xl overflow-hidden shadow-lg block group">
+        <!-- EBOOK 1: ALIMENTACIÓN SEGURA -->
+        <div class="ebook-card bg-white rounded-3xl overflow-hidden shadow-lg group">
           <div class="relative overflow-hidden h-56">
-            <img src="WhatsApp Image 2026-06-10 at 11.36.23 AM (2).jpeg"
-                 alt="Alimentación segura para tu peludo" class="ebook-img w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-            <div class="absolute top-4 left-4 bg-rosa text-white text-xs font-bold px-3 py-1.5 rounded-full shimmer">🔥 Disponible ahora</div>
-            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-full">PDF · $19.900</div>
-            <div class="absolute bottom-4 left-4 flex gap-0.5">
-              <span class="text-yellow-400 text-sm">★★★★★</span>
-            </div>
+            <img src="portada-alimentacion-segura.jpeg"
+                 alt="Alimentación Segura para tu Peludo" class="ebook-img w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+            <div class="absolute top-4 left-4 bg-rosa text-white text-xs font-bold px-3 py-1.5 rounded-full shimmer">🔥 Más vendido</div>
           </div>
           <div class="p-6">
             <span class="inline-block bg-moradoLight text-morado text-xs font-bold px-3 py-1 rounded-full mb-3">🍖 Alimentación</span>
-            <h3 class="text-xl font-black text-slate-800 mb-2 group-hover:text-morado transition">Alimentación Segura para tu Peludo</h3>
+            <h3 class="text-xl font-black text-slate-800 mb-2">Alimentación Segura para tu Peludo</h3>
             <p class="text-slate-500 text-sm leading-relaxed mb-5">
-              Qué puede y qué no puede comer tu amigo fiel. Lista de alimentos seguros, peligrosos y 20 recetas saludables.
+              Qué puede y qué no puede comer tu amigo fiel. +40 alimentos clasificados y 20 recetas saludables.
             </p>
-            <div class="flex items-center justify-between">
-              <div class="flex flex-wrap gap-2">
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded-lg">+40 alimentos</span>
-                <span class="bg-slate-100 text-slate-600 text-xs px-2 py-1 rounded-lg">20 recetas</span>
-              </div>
-              <span class="text-morado font-bold text-sm group-hover:translate-x-1 transition-transform inline-block">Ver guía →</span>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-morado text-2xl font-black">$2.99</span>
+              <span class="text-slate-400 text-sm">USD · PDF</span>
             </div>
-          </div>
-        </a>
-
-        <!-- PRÓXIMAMENTE 1 -->
-        <div class="coming-card bg-white/50 rounded-3xl overflow-hidden relative">
-          <div class="h-56 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover" style="filter:grayscale(100%) brightness(0.65);" />
-            <div class="absolute inset-0 bg-gradient-to-br from-moradoLight/85 to-purple-50/70 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-5xl mb-3">🎓</div>
-                <span class="bg-white text-slate-500 text-xs font-bold px-4 py-2 rounded-full shadow-md">Próximamente</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-6">
-            <span class="inline-block bg-slate-100 text-slate-400 text-xs font-bold px-3 py-1 rounded-full mb-3">🎓 Educación</span>
-            <h3 class="text-xl font-black text-slate-400 mb-2">Educación y Comportamiento</h3>
-            <p class="text-slate-300 text-sm leading-relaxed mb-5">Cómo educar a tu peludito con paciencia y técnicas efectivas. Próximamente disponible.</p>
-            <div class="flex items-center gap-2">
-              <div class="w-2 h-2 bg-morado rounded-full animate-pulse"></div>
-              <p class="text-slate-400 text-xs font-medium">En desarrollo · Muy pronto</p>
-            </div>
+            <a href="https://wa.me/573159784093?text=Hola%21%20Quiero%20el%20ebook%20Alimentaci%C3%B3n%20Segura%20para%20tu%20Peludo%20%F0%9F%90%BE"
+               target="_blank"
+               class="magnetic ripple-btn block w-full bg-rosa text-white text-center py-3.5 rounded-2xl font-bold hover:opacity-90 transition glow-rosa">
+              Lo quiero por WhatsApp 🐾
+            </a>
           </div>
         </div>
 
-        <!-- PRÓXIMAMENTE 2 -->
-        <div class="coming-card bg-white/50 rounded-3xl overflow-hidden relative">
-          <div class="h-56 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?auto=format&fit=crop&w=600&q=80" alt="" class="w-full h-full object-cover" style="filter:grayscale(100%) brightness(0.65);" />
-            <div class="absolute inset-0 bg-gradient-to-br from-rosaLight/85 to-pink-50/70 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-5xl mb-3">❤️‍🩹</div>
-                <span class="bg-white text-slate-500 text-xs font-bold px-4 py-2 rounded-full shadow-md">Próximamente</span>
-              </div>
-            </div>
+        <!-- EBOOK 2: PELUDO EN FORMA -->
+        <div class="ebook-card bg-white rounded-3xl overflow-hidden shadow-lg group">
+          <div class="relative overflow-hidden h-56">
+            <img src="portada-peludo-en-forma.jpeg"
+                 alt="Peludo en Forma" class="ebook-img w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+            <div class="absolute top-4 left-4 bg-morado text-white text-xs font-bold px-3 py-1.5 rounded-full shimmer">🆕 Nuevo</div>
           </div>
           <div class="p-6">
-            <span class="inline-block bg-slate-100 text-slate-400 text-xs font-bold px-3 py-1 rounded-full mb-3">❤️‍🩹 Salud</span>
-            <h3 class="text-xl font-black text-slate-400 mb-2">Salud y Bienestar Canino</h3>
-            <p class="text-slate-300 text-sm leading-relaxed mb-5">Señales de alerta, prevención y todo lo que necesitas saber para mantener a tu amigo fiel sano.</p>
-            <div class="flex items-center gap-2">
-              <div class="w-2 h-2 bg-rosa rounded-full animate-pulse" style="animation-delay:.5s"></div>
-              <p class="text-slate-400 text-xs font-medium">En desarrollo · Muy pronto</p>
+            <span class="inline-block bg-rosaLight text-rosa text-xs font-bold px-3 py-1 rounded-full mb-3">⚖️ Peso saludable</span>
+            <h3 class="text-xl font-black text-slate-800 mb-2">Peludo en Forma</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-5">
+              Guía práctica contra la sobrealimentación: cómo saber si tu perro tiene sobrepeso y un plan simple para bajarlo de forma sana.
+            </p>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-morado text-2xl font-black">$2.99</span>
+              <span class="text-slate-400 text-sm">USD · PDF</span>
             </div>
+            <a href="https://wa.me/573159784093?text=Hola%21%20Quiero%20el%20ebook%20Peludo%20en%20Forma%20%F0%9F%90%BE"
+               target="_blank"
+               class="magnetic ripple-btn block w-full bg-morado text-white text-center py-3.5 rounded-2xl font-bold hover:opacity-90 transition glow-morado">
+              Lo quiero por WhatsApp 🐾
+            </a>
           </div>
         </div>
 
-      </div>
-
-      <!-- Note -->
-      <div class="mt-10 text-center fade-up">
-        <p class="text-slate-400 text-sm">
-          🐾 Cada guía cubre un tema diferente. Síguenos en
-          <a href="https://www.instagram.com/huellasdeamor.pet/" target="_blank" class="text-morado font-semibold hover:underline">Instagram</a>
-          para ser el primero en saber cuándo lanzamos la próxima.
-        </p>
       </div>
     </div>
   </section>
 
-  <!-- ─── COMUNIDAD / REDES ─── -->
-  <section class="py-24 bg-white relative overflow-hidden" id="comunidad">
-    <div class="absolute inset-0 grid-bg opacity-40"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-moradoLight rounded-full blur-3xl opacity-20"></div>
-
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
-      <p class="text-xs font-bold uppercase tracking-widest text-rosa mb-4 fade-up">Únete a la comunidad</p>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-800 leading-[1.1] mb-6 fade-up" style="transition-delay:.1s">
-        Dueños que aman<br/>a sus peludos como<br/>
-        <span class="text-morado">tú lo amas</span>
-      </h2>
-      <p class="text-slate-500 text-base sm:text-lg leading-relaxed mb-10 sm:mb-12 max-w-2xl mx-auto fade-up" style="transition-delay:.2s">
-        Seguimos creciendo en redes con contenido educativo, consejos y recursos gratuitos para dueños responsables.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center fade-up" style="transition-delay:.3s">
-        <a href="https://www.instagram.com/huellasdeamor.pet/" target="_blank"
-           class="magnetic ripple-btn inline-flex items-center justify-center gap-3 bg-gradient-to-br from-morado to-rosa text-white px-6 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold text-base sm:text-lg hover:opacity-90 transition shadow-2xl shadow-purple-200">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          Síguenos en Instagram
-        </a>
-        <a href="https://www.tiktok.com/@huellasdeamor177" target="_blank"
-           class="magnetic ripple-btn inline-flex items-center justify-center gap-3 bg-slate-900 text-white px-6 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold text-base sm:text-lg hover:bg-slate-800 transition shadow-xl">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.77 1.52V6.74a4.85 4.85 0 01-1-.05z"/></svg>
-          Síguenos en TikTok
-        </a>
+  <!-- ─── VALOR ─── -->
+  <section class="py-14 bg-morado relative overflow-hidden">
+    <div class="absolute inset-0 dot-bg opacity-10"></div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="grid grid-cols-3 gap-3 sm:gap-6 stagger">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 text-center border border-white/10 card-lift hover:bg-white/20 transition">
+          <div class="text-2xl sm:text-3xl mb-2">📚</div>
+          <p class="font-bold text-white text-sm sm:text-base">Educar</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 text-center border border-white/10 card-lift hover:bg-white/20 transition">
+          <div class="text-2xl sm:text-3xl mb-2">🤝</div>
+          <p class="font-bold text-white text-sm sm:text-base">Acompañar</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 text-center border border-white/10 card-lift hover:bg-white/20 transition">
+          <div class="text-2xl sm:text-3xl mb-2">✨</div>
+          <p class="font-bold text-white text-sm sm:text-base">Simplificar</p>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIOS ─── -->
+  <section class="py-20 bg-white relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="text-center mb-12">
+        <p class="text-xs font-bold uppercase tracking-widest text-rosa mb-3 fade-up">Lo que dicen los dueños</p>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-800 fade-up" style="transition-delay:.1s">Familias que ya cuidan mejor a su peludo</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-5 stagger">
+        <div class="bg-crema rounded-2xl p-5 card-lift">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-morado to-rosa flex items-center justify-center text-white font-bold text-sm shrink-0">M</div>
+            <div><p class="font-bold text-slate-800 text-sm">María G.</p><p class="text-slate-400 text-xs">Mamá de Luna 🐕</p></div>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">"No tenía idea de que la uva era tóxica. Desde que leí la guía cambié todo. Ahora tiene más energía y mejor pelaje."</p>
+        </div>
+        <div class="bg-crema rounded-2xl p-5 card-lift">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-rosa to-morado flex items-center justify-center text-white font-bold text-sm shrink-0">A</div>
+            <div><p class="font-bold text-slate-800 text-sm">Andrea P.</p><p class="text-slate-400 text-xs">Mamá de Coco 🐩</p></div>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">"Las recetas son increíbles. Mi peludito las ama y yo sé exactamente qué le estoy dando."</p>
+        </div>
+        <div class="bg-crema rounded-2xl p-5 card-lift">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-br from-morado to-rosa flex items-center justify-center text-white font-bold text-sm shrink-0">C</div>
+            <div><p class="font-bold text-slate-800 text-sm">Carlos R.</p><p class="text-slate-400 text-xs">Papá de Max 🐶</p></div>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">"Max bajó el sobrepeso siguiendo el plan de Peludo en Forma. Clarísimo y sin tecnicismos."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA FINAL ─── -->
+  <section class="py-20 bg-gradient-to-br from-morado to-rosa relative overflow-hidden">
+    <div class="absolute inset-0 dot-bg opacity-10"></div>
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center relative z-10 fade-up">
+      <h2 class="text-2xl sm:text-3xl font-black text-white mb-4 leading-[1.2]">
+        Tu peludo merece lo mejor.<br/>Empieza hoy mismo.
+      </h2>
+      <p class="text-white/80 mb-8">Escríbenos por WhatsApp y te enviamos el ebook al instante.</p>
+      <a href="https://wa.me/573159784093?text=Hola%21%20Quiero%20saber%20m%C3%A1s%20sobre%20los%20ebooks%20de%20Huellas%20de%20Amor%20%F0%9F%90%BE"
+         target="_blank"
+         class="magnetic ripple-btn pulse-ring inline-flex items-center justify-center gap-3 bg-white text-morado px-8 py-4 rounded-2xl font-bold text-lg hover:opacity-90 transition shadow-2xl">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.76 1.53 5.3L2 22l4.93-1.62a9.83 9.83 0 0 0 5.11 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.06c-.24.68-1.4 1.3-1.93 1.38-.49.08-1.1.11-1.78-.11-.41-.13-.93-.31-1.6-.6-2.82-1.22-4.66-4.05-4.8-4.24-.14-.19-1.15-1.53-1.15-2.91s.71-2.07.96-2.34c.25-.27.55-.34.74-.34h.53c.17 0 .4-.07.62.47.24.59.81 2.04.88 2.19.07.15.12.32.02.51-.1.19-.16.31-.31.48-.16.17-.32.39-.46.52-.16.16-.32.33-.14.65.18.32.81 1.34 1.74 2.17 1.2 1.07 2.21 1.4 2.55 1.56.34.16.54.13.74-.05.24-.23.54-.6.85-.97.21-.26.46-.29.78-.17.32.12 2.03.96 2.38 1.13.35.17.58.26.66.41.09.15.09.85-.15 1.53z"/></svg>
+        Escríbenos ahora
+      </a>
     </div>
   </section>
 
   <!-- ─── FOOTER ─── -->
-  <footer class="bg-slate-900 text-white py-14 relative overflow-hidden">
-    <div class="absolute inset-0 dot-bg opacity-5"></div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-      <div class="grid md:grid-cols-3 gap-8 md:gap-10 mb-10">
-        <div>
-          <img src="WhatsApp Image 2026-06-10 at 11.36.23 AM.jpeg" alt="Huellas de Amor" class="h-12 object-contain brightness-0 invert opacity-80 mb-4" />
-          <p class="text-white/50 text-sm leading-relaxed max-w-xs">
-            Información práctica y clara para familias que aman a sus peludos.
-          </p>
-        </div>
-        <div>
-          <p class="text-white/30 text-xs font-bold uppercase tracking-widest mb-4">Guías</p>
-          <ul class="space-y-2">
-            <li><a href="alimentacion-segura.html" class="text-white/60 hover:text-rosa transition text-sm">Alimentación Segura para tu Peludo</a></li>
-            <li><span class="text-white/30 text-sm">Educación y Comportamiento <span class="text-xs">(pronto)</span></span></li>
-            <li><span class="text-white/30 text-sm">Salud y Bienestar <span class="text-xs">(pronto)</span></span></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-white/30 text-xs font-bold uppercase tracking-widest mb-4">Síguenos</p>
-          <ul class="space-y-2">
-            <li><a href="https://www.instagram.com/huellasdeamor.pet/" target="_blank" class="text-white/60 hover:text-rosa transition text-sm flex items-center gap-2">📸 Instagram</a></li>
-            <li><a href="https://www.tiktok.com/@huellasdeamor177" target="_blank" class="text-white/60 hover:text-white transition text-sm flex items-center gap-2">🎵 TikTok</a></li>
-          </ul>
-        </div>
+  <footer class="bg-slate-900 text-white py-10 relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-5">
+      <img src="WhatsApp Image 2026-06-10 at 11.36.23 AM.jpeg" alt="Huellas de Amor" class="h-10 object-contain brightness-0 invert opacity-80" />
+      <div class="flex items-center gap-5">
+        <a href="https://www.instagram.com/huellasdeamor.pet/" target="_blank" class="text-white/60 hover:text-rosa transition text-sm">Instagram</a>
+        <a href="https://www.tiktok.com/@huellasdeamor177" target="_blank" class="text-white/60 hover:text-white transition text-sm">TikTok</a>
+        <a href="https://wa.me/573159784093" target="_blank" class="text-white/60 hover:text-green-400 transition text-sm">WhatsApp</a>
       </div>
-      <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
-        <p class="text-white/30 text-sm">© 2026 Huellas de Amor · huellasdeamor.pet</p>
-        <p class="text-white/20 text-xs">Educar · Acompañar · Simplificar 🐾</p>
-      </div>
+      <p class="text-white/30 text-xs">© 2026 Huellas de Amor</p>
     </div>
   </footer>
 
+  <!-- ─── FLOATING WHATSAPP ─── -->
+  <a href="https://wa.me/573159784093?text=Hola%21%20Quiero%20saber%20m%C3%A1s%20sobre%20los%20ebooks%20de%20Huellas%20de%20Amor%20%F0%9F%90%BE"
+     target="_blank" class="wa-float pulse-ring" aria-label="Escríbenos por WhatsApp">
+    <span class="flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-2xl">
+      <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.76 1.53 5.3L2 22l4.93-1.62a9.83 9.83 0 0 0 5.11 1.4h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.06c-.24.68-1.4 1.3-1.93 1.38-.49.08-1.1.11-1.78-.11-.41-.13-.93-.31-1.6-.6-2.82-1.22-4.66-4.05-4.8-4.24-.14-.19-1.15-1.53-1.15-2.91s.71-2.07.96-2.34c.25-.27.55-.34.74-.34h.53c.17 0 .4-.07.62.47.24.59.81 2.04.88 2.19.07.15.12.32.02.51-.1.19-.16.31-.31.48-.16.17-.32.39-.46.52-.16.16-.32.33-.14.65.18.32.81 1.34 1.74 2.17 1.2 1.07 2.21 1.4 2.55 1.56.34.16.54.13.74-.05.24-.23.54-.6.85-.97.21-.26.46-.29.78-.17.32.12 2.03.96 2.38 1.13.35.17.58.26.66.41.09.15.09.85-.15 1.53z"/></svg>
+    </span>
+  </a>
+
   <script>
-    /* SCROLL PROGRESS */
     window.addEventListener('scroll', () => {
       document.getElementById('scroll-bar').style.width = (window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
       document.getElementById('navbar').style.boxShadow = window.scrollY>20 ? '0 4px 24px rgba(0,0,0,.08)' : '';
     });
 
-    /* INTERSECTION OBSERVER */
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-up,.fade-left,.fade-right,.stagger,.hero-stagger').forEach(el => io.observe(el));
+    document.querySelectorAll('.fade-up,.stagger,.hero-stagger').forEach(el => io.observe(el));
 
-    /* GALLERY CELLS: stagger con delay individual */
-    const galleryObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const delay = parseInt(e.target.dataset.delay || '0');
-          setTimeout(() => e.target.classList.add('visible'), delay);
-          galleryObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.gallery-cell').forEach(el => galleryObserver.observe(el));
-
-
-    /* RIPPLE */
     document.querySelectorAll('.ripple-btn').forEach(btn=>{
       btn.addEventListener('click',function(e){
         const r=document.createElement('span'),rect=btn.getBoundingClientRect(),size=Math.max(rect.width,rect.height);
@@ -580,20 +294,9 @@
       });
     });
 
-    /* MAGNETIC */
     document.querySelectorAll('.magnetic').forEach(btn=>{
       btn.addEventListener('mousemove',e=>{const rect=btn.getBoundingClientRect();btn.style.transform=`translate(${(e.clientX-rect.left-rect.width/2)*.2}px,${(e.clientY-rect.top-rect.height/2)*.2}px)`;});
       btn.addEventListener('mouseleave',()=>{btn.style.transform='';});
-    });
-
-    /* 3D TILT */
-    document.querySelectorAll('.card-tilt').forEach(card=>{
-      card.addEventListener('mousemove',e=>{
-        const rect=card.getBoundingClientRect(),x=(e.clientX-rect.left)/rect.width-.5,y=(e.clientY-rect.top)/rect.height-.5;
-        card.style.transform=`perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg) scale(1.02)`;
-        card.style.boxShadow=`${-x*20}px ${y*20}px 50px rgba(107,33,168,.15)`;
-      });
-      card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.boxShadow='';});
     });
   </script>
 </body>
